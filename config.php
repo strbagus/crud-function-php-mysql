@@ -16,6 +16,16 @@ class Config{
             return $this->conn;
         }
     }
+	
+	//disconnect
+    public function __destruct(){
+    	if($this->myconn->close()){
+            $this->con = false;
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     // cek table
     private function tableExists($table){
